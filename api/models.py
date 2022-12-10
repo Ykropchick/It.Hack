@@ -25,7 +25,7 @@ class UserAuthentication(models.Model):
     id = models.BigIntegerField(primary_key=True)
     username = models.CharField(max_length=40)
     password = models.BigIntegerField()
-    emailAddress = models.CharField(max_length=50)
+    email_address = models.CharField(max_length=50)
     is_company = models.BooleanField()
 
 
@@ -44,7 +44,7 @@ class User(models.Model):
         UserAuthentication,
         on_delete=models.CASCADE
     )
-    frst_name = models.CharField(max_length=40)
+    first_name = models.CharField(max_length=40)
     last_name = models.CharField(max_length=40)
     photo = models.ImageField()
     sills = models.ForeignKey(
