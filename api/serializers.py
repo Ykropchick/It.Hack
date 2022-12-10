@@ -1,20 +1,26 @@
 from rest_framework import serializers
 from api.models import *
 
-
 class UserAuthSerializer(serializers.ModelSerializer):
     class Meta:
-        modela = UserAuthentication
-        field = (
-            "username",
-            "email_address"
-        )
+        model = UserAuthentication
+        field = "__all__"
 
-class StudentSerializer(serializers.ModelSerializer):
+class StudentFullSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Student
+        fields = '__all__'
+
+class StudentBasicSerializer(serializers.ModelSerializer):
     class Meta:
         model = Student
         fields = (
             "first_name",
             "last_name",
-            "photo"
+            "skills"
         )
+
+class CompanySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Company
+        fields = '__all__'
