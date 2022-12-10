@@ -9,21 +9,15 @@ from api.models import *
 from rest_framework.views import APIView
 
 
-
 class StudentViewSet(viewsets.ModelViewSet):
     queryset = Student.objects.all()
     serializer_class = StudentFullSerializer
     parser_classes = (MultiPartParser, FormParser)
 
 
-class UserAuthViewSet(viewsets.ModelViewSet):
-    queryset = UserAuthentication.objects.all()
-    serializer_class = UserAuthSerializer
-
 class CompanyViewSet(viewsets.ModelViewSet):
     queryset = Company.objects.all()
     serializer_class = CompanySerializer
-
 
 
 class StudentFullInfo(APIView):
@@ -34,6 +28,7 @@ class StudentFullInfo(APIView):
             return Response(None)
         ser = StudentFullSerializer(res[0])
         return Response({"user": ser.data})
+
 
 class StudentBasicInfo(APIView):
     def get(self, request):

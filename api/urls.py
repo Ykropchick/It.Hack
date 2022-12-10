@@ -1,7 +1,7 @@
 from django.urls import include, path
 from rest_framework import routers
 
-from api.views import (UserAuthViewSet,
+from api.views import (CompanyViewSet,
                        StudentViewSet,
                        StudentFullInfo,
                        StudentBasicInfo,
@@ -9,7 +9,7 @@ from api.views import (UserAuthViewSet,
 
 router = routers.DefaultRouter()
 router.register(r'Students', StudentViewSet)
-router.register(r'AuthUser', UserAuthViewSet)
+router.register(r'Companies', CompanyViewSet)
 # router.register(r'StudentInfo', views.UpdateTimeViewSet, basename="StudentInfo")
 
 urlpatterns = [
