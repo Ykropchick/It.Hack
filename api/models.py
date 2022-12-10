@@ -10,7 +10,7 @@ class Skill(models.Model):
 
 class Contact(models.Model):
     id = models.IntegerField(primary_key=True)
-    name = models.CharField(max_length=40)
+    type = models.CharField(max_length=40)
     value = models.CharField(max_length=40)
 
 
@@ -25,7 +25,7 @@ class UserAuthentication(models.Model):
     id = models.BigIntegerField(primary_key=True)
     username = models.CharField(max_length=40)
     password = models.BigIntegerField()
-    email_address = models.CharField(max_length=50)
+    email_address = models.EmailField(max_length=50)
     is_company = models.BooleanField()
 
 
