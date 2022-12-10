@@ -4,10 +4,10 @@ from django.urls import include, path
 
 from rest_framework import routers
 
-from api.views import UserAuthViewSet, UserViewSet
+from api.views import UserAuthViewSet, StudentViewSet
 
 router = routers.DefaultRouter()
-router.register(r'users', UserViewSet)
+router.register(r'students', StudentViewSet)
 router.register(r'AuthUser', UserAuthViewSet)
 
 urlpatterns = [

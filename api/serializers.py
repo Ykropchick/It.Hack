@@ -10,9 +10,9 @@ class UserAuthSerializer(serializers.ModelSerializer):
             "email_address"
         )
 
-class UserSerializer(serializers.ModelSerializer):
+class StudentSerializer(serializers.ModelSerializer):
     class Meta:
-        model = User
+        model = Student
         fields = (
             "first_name",
             "last_name",

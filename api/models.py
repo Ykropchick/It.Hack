@@ -39,28 +39,32 @@ class Company(models.Model):
     photo = models.ImageField()
 
 
-class User(models.Model):
+class Student(models.Model):
     user = models.OneToOneField(
         UserAuthentication,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        null=True
     )
     first_name = models.CharField(max_length=40)
     last_name = models.CharField(max_length=40)
-    photo = models.ImageField()
+    photo = models.ImageField(null=True)
     sills = models.ForeignKey(
         Skill,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        null=True
     )
-    description = models.TextField()
-    course = models.IntegerField()
-    specialization = models.CharField(max_length=40)
-    university = models.CharField(max_length=40)
+    description = models.TextField(null=True)
+    course = models.IntegerField(null=True)
+    specialization = models.CharField(max_length=40, null=True)
+    university = models.CharField(max_length=40, null=True)
     contacts = models.ForeignKey(
         Contact,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        null=True
     )
-    is_authorised = models.BooleanField()
+    is_authorised = models.BooleanField(null=True)
     projects = models.ForeignKey(
         UserProject,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        null=True
     )
