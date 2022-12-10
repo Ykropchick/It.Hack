@@ -18,6 +18,8 @@ class StudentViewSet(viewsets.ModelViewSet):
 class CompanyViewSet(viewsets.ModelViewSet):
     queryset = Company.objects.all()
     serializer_class = CompanySerializer
+    parser_classes = (MultiPartParser, FormParser)
+
 
 
 class StudentFullInfo(APIView):

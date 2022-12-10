@@ -8,16 +8,20 @@ class Company(models.Model):
     description = models.TextField()
     photo = models.ImageField(null=True)
 
+
 class Project(models.Model):
     id = models.IntegerField(primary_key=True)
     owner = models.ForeignKey(
         Company,
         blank=True,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        default=None
     )
     name = models.CharField(max_length=40)
     description = models.TextField()
     date = models.DateField()
+
+
 class Skill(models.Model):
     id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=40)
@@ -36,15 +40,16 @@ class Student(models.Model):
     is_authorised = models.BooleanField(null=True)
     skills = models.ManyToManyField(
         Skill,
-        blank=True
+        blank=True,
+        default=None
     )
 
 
 class Contact(models.Model):
+    id = models.IntegerField(primary_key=True)
     owner = models.ForeignKey(
         Student,
         on_delete=models.CASCADE,
-        default=None
     )
     type = models.CharField(max_length=40)
     value = models.CharField(max_length=40)
