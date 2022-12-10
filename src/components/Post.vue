@@ -1,8 +1,9 @@
 <template>
   <div class="container">
-    <h3>{{post.title}}</h3>
-    <div>{{post.body}}</div>
+    <h3 class="title">{{post.title}}</h3>
+    <div class="body">{{post.body}}</div>
 
+    <button class="More">Подробнее</button>
   </div>
 </template>
 
@@ -24,5 +25,35 @@ export default {
 </script>
 
 <style scoped>
+.container{
+  text-align: center;
+  word-wrap: break-word;
+  position: relative;
+}
+.title{
+  color: white;
+}
+.body{
+  overflow: hidden;
+  clear: both;
+  color: white;
+}
+.More{
+  float: right;
 
+  position: absolute;
+  top: 245px;
+  right: 10px;
+
+  width: 150px;
+  height: 42px;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 39px;
+
+  color: white;
+  background: #7B45EC;
+
+}
 </style>

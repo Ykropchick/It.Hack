@@ -1,7 +1,10 @@
 <template>
-  <div v-for="post in posts" :key="post.id">
-    <Post :post="post"/>
+  <div class="PostArray" v-for="postArray in slicedArray">
+    <div class="post" v-for="post in postArray" :key="post.id">
+      <Post :post="post"/>
+    </div>
   </div>
+
 </template>
 
 <script>
@@ -20,7 +23,6 @@ export default {
     async getPosts () {
       const response = await axios.get(this.PostApi);
       this.posts = response.data.posts;
-      console.log(this.posts)
     }
   },
   computed:{
@@ -28,18 +30,36 @@ export default {
       UrlApi: state => state.UrlAPI,
       UserApi: state => state.UsersAPI,
       PostApi: state => state.PostAPi,
-    })
+    }),
+    slicedArray(){
+      const res = [];
+      for(let i = 0; i < this.posts.length; i+= 4){
+        res.push(this.posts.slice(i, i+4))
+      }
+      console.log(res)
+      return res
+    }
   },
   mounted() {
     this.getPosts()
   }
+
 }
 </script>
 
 <style scoped>
 
-.row{
+.PostArray{
+  display: flex;
+  padding: 10px 400px;
+}
+.post{
   display: inline-block;
+  border: solid 4px purple;
+  margin: 10px 10px;
+  width: 300px;
+  height: 300px;
+
 }
 
 </style>
