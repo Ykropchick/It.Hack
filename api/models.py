@@ -20,6 +20,7 @@ class Project(models.Model):
     name = models.CharField(max_length=40)
     short_description = models.CharField(max_length=70, null=True)
     description = models.TextField(null=True)
+    photo = models.ImageField(null=True)
     date = models.DateField(null=True)
 
 

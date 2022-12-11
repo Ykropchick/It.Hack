@@ -1,5 +1,9 @@
 import os
 from random import choice, randint
+from PIL import Image
+from requests import get
+from io import BytesIO as BO
+
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "app.settings")
 
 import django
@@ -10,7 +14,8 @@ from dateutil.relativedelta import relativedelta
 
 from faker import Faker
 from faker.providers import internet, job, company, color, date_time
-import faker
+from django.core.files.base import File, BytesIO
+
 
 f = Faker("RU_ru")
 f.add_provider(internet)
@@ -48,6 +53,7 @@ for x in range(20):
     con2 = Contact(owner=student, type="email", value=f.free_email())
     con2.save(force_insert=True)
 
+url = "https://api.multiavatar.com/"
 for i in range(20):
     name = f.company()
     description = ' '.join([f.word() for _ in range(20)])
@@ -64,9 +70,15 @@ for i in range(20):
         name=f.color_name(),
         description=d,
         date=date.today() + relativedelta(months=randint(1, 4), days=randint(1, 31)),
-        short_description=s_desc
-
+        short_description=s_desc,
     )
+
+    img = Image.open(get(f"{url} {i} {i}.png", stream=True).raw)
+    pixels = img.load()
+
+    blob = BytesIO()
+    img.save(blob, 'PNG')
+    p1.photo.save('Image.png', File(blob))
     p1.save()
 
 
