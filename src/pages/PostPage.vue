@@ -1,6 +1,6 @@
 <template>
-  <div class="PostArray" v-for="postArray in slicedArray">
-    <div class="post" v-for="post in postArray" :key="post.id">
+  <div class="row PostArray" v-for="postArray in slicedArray">
+    <div class="col post position-relative" v-for="post in postArray" :key="post.id">
       <Post :post="post"/>
     </div>
   </div>
@@ -50,15 +50,13 @@ export default {
 <style scoped>
 
 .PostArray{
-  display: flex;
   padding: 10px 400px;
 }
 .post{
-  display: inline-block;
   border: solid 4px purple;
   margin: 10px 10px;
-  width: 300px;
-  height: 300px;
+  width: 400px;
+  height: 400px;
 
 }
 

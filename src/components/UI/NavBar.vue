@@ -3,9 +3,9 @@
 
     <div class="nav__block">
       <img class="sidebar" src="../../assets/sidebar.png" alt="" >
-      <img class="logo" src="../../assets/logo.png" alt="">
+      <img @click="this.$router.push('/')" class="logo" src="../../assets/logo.png" alt="">
       <div class="nav__link">Студенты</div>
-      <div class="nav__link">Проекты</div>
+      <div @click="this.$router.push('/posts')" class="nav__link">Проекты</div>
       <div class="nav__link">Биржа</div>
     </div>
 
@@ -42,10 +42,6 @@ export default {
 .name{
   color: white;
   padding: 15px;
-}
-
-.userLogo{
-  padding: 10px;
 }
 
 .nav__block{
