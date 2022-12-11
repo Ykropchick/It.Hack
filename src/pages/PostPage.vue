@@ -4,6 +4,8 @@
       <Post :post="post"/>
     </div>
   </div>
+  <MyDialog :show="true"/>
+
 
 </template>
 
@@ -11,12 +13,17 @@
 import axios from "axios";
 import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
 import Post from "@/components/Post";
+import MyDialog from "@/components/UI/MyDialog";
 
 export default {
-  components: {Post},
+  components: {Post, MyDialog},
   data(){
     return{
-      posts: {},
+      dialogContent:{
+        name:'',
+        description:'',
+        date:'',
+      }
     }
   },
   methods:{
