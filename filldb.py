@@ -6,9 +6,10 @@ import django
 django.setup()
 from api.models import *
 from datetime import date
+from dateutil.relativedelta import relativedelta
 
 from faker import Faker
-from faker.providers import internet, job, company, color
+from faker.providers import internet, job, company, color, date_time
 import faker
 
 f = Faker("RU_ru")
@@ -16,6 +17,7 @@ f.add_provider(internet)
 f.add_provider(job)
 f.add_provider(company)
 f.add_provider(color)
+f.add_provider(date_time)
 
 
 for x in range(20):
@@ -34,7 +36,7 @@ for x in range(20):
         course=course,
         university=uni,
         specialization=spec,
-        is_authorised=auth,
+        is_authorised=auth
     )
     # print(student.pk)
     # exit(0)
@@ -55,11 +57,15 @@ for i in range(20):
     )
     c.save()
     c = Company.objects.filter(name=name, description=description)[0]
+    d = ' '.join([f.word() for _ in range(10)])
+    s_desc = ' '.join(description.split()[:3])
     p1 = Project(
         owner=c,
-        name=f.color(),
-        description=' '.join([f.word() for _ in range(10)]),
-        # date=faker.()
+        name=f.color_name(),
+        description=d,
+        date=date.today() + relativedelta(months=randint(1, 4), days=randint(1, 31)),
+        short_description=s_desc
+
     )
     p1.save()
 

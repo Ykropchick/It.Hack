@@ -3,6 +3,7 @@ from rest_framework import routers
 
 from api.views import (CompanyViewSet,
                        StudentViewSet,
+                       ProjectViewSet,
                        StudentFullInfo,
                        StudentBasicInfo,
                        CompanyFullInfo)
@@ -10,7 +11,7 @@ from api.views import (CompanyViewSet,
 router = routers.DefaultRouter()
 router.register(r'Students', StudentViewSet)
 router.register(r'Companies', CompanyViewSet)
-# router.register(r'StudentInfo', views.UpdateTimeViewSet, basename="StudentInfo")
+router.register(r'Projects', ProjectViewSet)
 
 urlpatterns = [
    path('', include(router.urls)),

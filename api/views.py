@@ -21,6 +21,11 @@ class CompanyViewSet(viewsets.ModelViewSet):
     parser_classes = (MultiPartParser, FormParser)
 
 
+class ProjectViewSet(viewsets.ModelViewSet):
+    queryset = Project.objects.all()
+    serializer_class = ProjectSerializer
+    parser_classes = (MultiPartParser, FormParser)
+
 
 class StudentFullInfo(APIView):
     def get(self, request):
@@ -29,22 +34,23 @@ class StudentFullInfo(APIView):
         if len(res) == 0:
             return Response(None)
         ser = StudentFullSerializer(res[0])
-        return Response({"user": ser.data})
+        return Response({"student": ser.data})
 
 
 class StudentBasicInfo(APIView):
     def get(self, request):
         search_id = request.GET["ID"]
-        res = Student.object.filter(id=search_id)
+        res = Student.objects.filter(id=search_id)
         if len(res) == 0:
             return Response(None)
         ser = StudentBasicSerializer(res[0])
-        return Response({"user": ser.data})
+        return Response({"student": ser.data})
+
 
 class CompanyFullInfo(APIView):
     def get(self, request):
         search_id = request.GET["ID"]
-        res = Company.object.filter(id=search_id)
+        res = Company.objects.filter(id=search_id)
         if len(res) == 0:
             return Response(None)
         ser = CompanySerializer(res[0])

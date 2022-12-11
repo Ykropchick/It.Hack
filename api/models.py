@@ -18,8 +18,9 @@ class Project(models.Model):
         default=None
     )
     name = models.CharField(max_length=40)
-    description = models.TextField()
-    date = models.DateField()
+    short_description = models.CharField(max_length=70, null=True)
+    description = models.TextField(null=True)
+    date = models.DateField(null=True)
 
 
 class Skill(models.Model):
@@ -41,7 +42,8 @@ class Student(models.Model):
     skills = models.ManyToManyField(
         Skill,
         blank=True,
-        default=None
+        default=None,
+        null=True
     )
 
 
