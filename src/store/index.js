@@ -4,7 +4,8 @@ export default createStore({
   state: {
     UrlAPI: "https://dummyjson.com/",
     UsersAPI: "https://dummyjson.com/users?limit=10",
-    PostAPi: "https://dummyjson.com/posts?limit=10",
+    PostAPi: "http://127.0.0.1:8001/api/Projects/",
+
 
   },
   getters: {

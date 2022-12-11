@@ -14,18 +14,12 @@ export default {
       type: Boolean,
       default: false,
     },
-    name:{
-      type:String,
-      require:true,
-    },
-    description:{
-      type:String,
-      require:true
-    },
-    data:{
-      type:Date,
-      require: false,
+    methods: {
+      hideDialog(){
+        this.$emit("update:show", false)
+      }
     }
+
   },
   mounted() {
     console.log('dialog mounted')

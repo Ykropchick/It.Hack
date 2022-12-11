@@ -1,8 +1,8 @@
 <template>
-    <h3 class="title">{{post.title}}</h3>
-    <div class="body">{{post.body}}</div>
+    <h3 class="title" >{{post.name}}</h3>
+    <div class="body" >{{post.short_description}}</div>
+    <button @click="$emit('detailer', post.id)"  type="button" class="btn btn-primary More position-absolute bottom-0 end-0">Подробнее</button>
 
-  <button type="button" class="btn btn-primary More position-absolute bottom-0 end-0">Подробнее</button>
 </template>
 
 <script>
@@ -15,10 +15,15 @@ export default {
     post:{
       type:Object,
       required: true,
+    },
+    style:{
+      type: String,
+      require: false,
     }
-  }
+  },
 
-
+mounted() {
+}
 }
 </script>
 

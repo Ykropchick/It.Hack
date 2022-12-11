@@ -11,6 +11,9 @@ import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
 export default {
   components: {},
   data() {
+    return{
+
+    }
   },
   methods: {
   },
@@ -26,7 +29,7 @@ export default {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  background: #000000;;
+  background: #000000;
 }
 .app{
 }

@@ -7,6 +7,7 @@
       <div class="nav__link">Студенты</div>
       <div @click="this.$router.push('/posts')" class="nav__link">Проекты</div>
       <div class="nav__link">Биржа</div>
+      <a class="nav__link" href="http://127.0.0.1:8001/admin/">Админка</a>
     </div>
 
     <div class="nav__block">
